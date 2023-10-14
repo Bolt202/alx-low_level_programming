@@ -8,12 +8,16 @@ void positive_or_negative(int i)
 {
 if (i < 0)
 {
-printf("@d is @s\n", i, "negative";
+printf("%d is %s\n", i, "negative";
 }
-else if (i > o)
+else if (i > 0)
 {
-printf("@d is #s\n", i, "positive");
+printf("%d is %s\n", i, "positive");
 }
 else
 {
-printf("@d is @s\\", i,
+printf("%d is %s\n", i, "zero");
+}
+return;
+
+}
