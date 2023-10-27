@@ -1,43 +1,61 @@
 #include <stdio.h>
-#include "main.h"
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
 
 /**
- * check_num - Checks if a string is a numeric digit.
- * @s: The string to check.
+ * check_num - Checks if a string consists of only digits.
+ * @str: The string to check.
  *
- * Return: 1 if the string is a numeric digit, 0 otherwise.
+ * Return: 1 if the string contains only digits, 0 otherwise.
  */
-int check_num(char *s)
+int check_num(char *str)
 {
-	int i = 0;
+	unsigned int count = 0;
 
-	while (s[i] != '\0')
+	while (count < strlen(str))
 	{
-		if (s[i] < '0' || s[i] > '9')
+		if (!isdigit(str[count]))
+		{
 			return (0);
-		i++;
+		}
+
+		count++;
 	}
+
 	return (1);
 }
 
 /**
- * main - Adds two numbers.
- * @argc: Number of arguments.
- * @argv: Array of arguments.
+ * main - Adds integers passed as command-line arguments.
+ * @argc: Number of command-line arguments.
+ * @argv: Array of command-line arguments.
  *
  * Return: 0 (Success), 1 (Error).
  */
 int main(int argc, char *argv[])
 {
+	int count;
+	int str_to_int;
 	int sum = 0;
 
-	if (argc != 3 || !check_num(argv[1]) || !check_num(argv[2]))
+	count = 1;
+	while (count < argc)
 	{
-		printf("Error\n");
-		return (1);
+		if (check_num(argv[count]))
+		{
+			str_to_int = atoi(argv[count]);
+			sum += str_to_int;
+		}
+		else
+		{
+			printf("Error\n");
+			return (1);
+		}
+
+		count++;
 	}
 
-	sum = atoi(argv[1]) + atoi(argv[2]);
 	printf("%d\n", sum);
 
 	return (0);
