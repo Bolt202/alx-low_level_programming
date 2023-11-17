@@ -92,23 +92,25 @@ void fill_matrix(char **matrix, char *str)
  */
 char **strtow(char *str)
 {
-	int words;
+    int words;
 
-	if (str == NULL || *str == '\0')
-		return (NULL);
+    if (str == NULL || *str == '\0')
+        return (NULL);
 
-	words = count_word(str);
+    char **matrix;  // Declare the variable first
 
-	if (words == 0)
-		return (NULL);
+    words = count_word(str);
 
-	char **matrix = allocate_memory(words);
+    if (words == 0)
+        return (NULL);
 
-	if (matrix == NULL)
-		return (NULL);
+    matrix = allocate_memory(words);  // Assign the value on a separate line
 
-	fill_matrix(matrix, str);
+    if (matrix == NULL)
+        return (NULL);
 
-	return (matrix);
+    fill_matrix(matrix, str);
+
+    return (matrix);
 }
 
